@@ -46,7 +46,7 @@ with col1:
     
     # Location dropdown
     st.markdown("<p><strong>Location</strong></p>", unsafe_allow_html=True)
-    location = st.selectbox("", options=["Urban", "Suburban", "Rural"], index=1, label_visibility="collapsed")
+    location = st.selectbox("", options=["Urban", "Suburban", "Rural", "Urban", "Waterfront", "Mountain"], index=1, label_visibility="collapsed")
     
     # Year Built slider
     st.markdown(f"<p><strong>Year Built:</strong> <span id='year-value'></span></p>", unsafe_allow_html=True)

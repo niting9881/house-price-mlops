@@ -32,7 +32,7 @@ mlflow.set_experiment(config['model']['name'])
 
 # Load data
 logger.info("Loading data...")
-data = pd.read_csv('data/processed/engineered_features.csv')
+data = pd.read_csv('data/processed/featured_house_data.csv')
 
 # Split features and target
 X = data.drop('price', axis=1)
