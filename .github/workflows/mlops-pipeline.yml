@@ -121,19 +121,10 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
       
-    - name: Build Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: "."
-        file: "./src/api/Dockerfile"
-        tags: |
-          house-price-model:latest
-          house-price-model:$(echo ${{ github.sha }} | cut -c1-7)
-        load: true
-        
-    - name: Test Docker image
+    - name: Build and test Docker image
       run: |
         COMMIT_HASH=$(echo ${{ github.sha }} | cut -c1-7)
+        docker build -t house-price-model:$COMMIT_HASH -f ./src/api/Dockerfile .
         docker run -d -p 8000:8000 --name test-api house-price-model:$COMMIT_HASH
         for i in {1..10}; do
           curl -f http://localhost:8000/health && break || sleep 5;
@@ -161,11 +152,9 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Push Docker image to GHCR
-      uses: docker/build-push-action@v2
-      with:
-        context: "."
-        file: "./src/api/Dockerfile"
-        tags: |
-          ghcr.io/${{ github.repository_owner }}/house-price-model:latest
-          ghcr.io/${{ github.repository_owner }}/house-price-model:$(echo ${{ github.sha }} | cut -c1-7)
+      run: |
+        COMMIT_HASH=$(echo ${{ github.sha }} | cut -c1-7)
+        docker tag house-price-model:$COMMIT_HASH ghcr.io/${{ github.repository_owner }}/house-price-model:latest
+        docker push ghcr.io/${{ github.repository_owner }}/house-price-model:$COMMIT_HASH
+        docker push ghcr.io/${{ github.repository_owner }}/house-price-model:latest
 
