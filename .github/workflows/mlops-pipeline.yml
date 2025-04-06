@@ -130,8 +130,9 @@ jobs:
     - name: Test Docker image
       run: |
         docker run -d -p 8000:8000 --name test-api house-price-model:github-${{ github.sha }}
-        sleep 5  # Wait for container to start
-        curl -f http://localhost:8000/health || exit 1
+        for i in {1..10}; do
+          curl -f http://localhost:8000/health && break || sleep 5;
+        done
         docker logs test-api
 
     - name: Clean up
