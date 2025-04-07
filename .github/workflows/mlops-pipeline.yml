@@ -131,7 +131,7 @@ jobs:
         done
         docker logs test-api
 
-    - name: Clean up
+    - name: Clean up Test Container
       run: |
         docker stop test-api || true
         docker rm test-api || true
@@ -142,10 +142,11 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-        
+     
     - name: Push Docker image to GHCR
       run: |
         COMMIT_HASH=$(echo ${{ github.sha }} | cut -c1-7)
+        docker build -t house-price-model:$COMMIT_HASH -f ./src/api/Dockerfile .
         docker tag house-price-model:$COMMIT_HASH ghcr.io/${{ github.repository_owner }}/house-price-model:latest
         docker push ghcr.io/${{ github.repository_owner }}/house-price-model:$COMMIT_HASH
         docker push ghcr.io/${{ github.repository_owner }}/house-price-model:latest
