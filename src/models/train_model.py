@@ -61,10 +61,10 @@ def main(args):
 
     # Load data
     data = pd.read_csv(args.data)
-    features = model_cfg['feature_sets']['rfe']
     target = model_cfg['target_variable']
 
-    X = data[features]
+    # Use all features except the target variable
+    X = data.drop(columns=[target])
     y = data[target]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -114,7 +114,7 @@ def main(args):
             f"Model for predicting house prices.\n"
             f"Algorithm: {model_cfg['best_model']}\n"
             f"Hyperparameters: {model_cfg['parameters']}\n"
-            f"Features used: {', '.join(features)}\n"
+            f"Features used: All features in the dataset except the target variable\n"
             f"Target variable: {target}\n"
             f"Trained on dataset: {args.data}\n"
             f"Model saved at: {args.models_dir}/trained/{model_name}.pkl\n"
@@ -127,7 +127,7 @@ def main(args):
         # Add tags for better organization
         client.set_registered_model_tag(model_name, "algorithm", model_cfg['best_model'])
         client.set_registered_model_tag(model_name, "hyperparameters", str(model_cfg['parameters']))
-        client.set_registered_model_tag(model_name, "features", ', '.join(features))
+        client.set_registered_model_tag(model_name, "features", "All features except target variable")
         client.set_registered_model_tag(model_name, "target_variable", target)
         client.set_registered_model_tag(model_name, "training_dataset", args.data)
         client.set_registered_model_tag(model_name, "model_path", f"{args.models_dir}/trained/{model_name}.pkl")
