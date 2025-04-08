@@ -8,6 +8,29 @@ on:
     branches: [ main ]
   schedule:
     - cron: '0 0 * * 0'  # Run weekly on Sundays
+  workflow_dispatch:
+    inputs:
+      run_all:
+        description: 'Run all jobs'
+        required: false
+        default: 'false'
+      run_data_processing:
+        description: 'Run data processing job'
+        required: false
+        default: 'false'
+      run_model_training:
+        description: 'Run model training job'
+        required: false
+        default: 'true'
+      run_build_and_publish:
+        description: 'Run build and publish job'
+        required: false
+        default: 'true'
+  release:
+    types: [created]
+    branches: [ main ]
+    tags: [ 'v*.*.*' ]
+
 
 jobs:
   data-processing:

@@ -17,6 +17,7 @@ RUN mkdir -p /app/models/trained
 # Copy model and preprocessor files
 COPY models/trained/house_price_model.pkl /app/models/trained/
 COPY models/trained/preprocessor.pkl /app/models/trained/
+COPY configs/model_config.yaml /app/models/trained/
 
 # Copy application code
 COPY src/api/ /app/
