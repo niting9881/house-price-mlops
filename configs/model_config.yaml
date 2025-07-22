@@ -13,7 +13,7 @@ model:
     - '14'
     - '15'
   mae: 16370.504595588236
-  name: house_price_model
+  name: house_price_model_latest
   parameters:
     base_score: null
     booster: null
