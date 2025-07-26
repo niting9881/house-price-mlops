@@ -1,42 +1,106 @@
-# ---------------------------------------------
-# 📊 DATA PROCESSING & ANALYSIS
-# ---------------------------------------------
-pandas==1.5.3          # Data manipulation and analysis — core for working with tabular data
-numpy==1.24.3          # Numerical operations, arrays, and matrix support (used by almost all ML libraries)
+# =============================================================================
+# MLOps Pipeline - Unified Requirements File
+# =============================================================================
+# This file consolidates all dependencies for the complete MLOps pipeline
+# including Phase 1 (Core ML Pipeline) and Phase 2 (Advanced Monitoring)
 
-# ---------------------------------------------
-# 🧠 MACHINE LEARNING
-# ---------------------------------------------
-scikit-learn==1.2.2    # Classic ML models (regression, classification, clustering), preprocessing, model evaluation
-xgboost==1.7.5
-# ---------------------------------------------
-# 📈 VISUALIZATION
-# ---------------------------------------------
-matplotlib==3.7.1      # Base library for plotting graphs, charts, and visualizations
-seaborn==0.12.2        # High-level interface for drawing attractive and informative statistical graphics (built on matplotlib)
+# =============================================================================
+# 📊 CORE DATA PROCESSING & ANALYSIS
+# =============================================================================
+pandas==1.5.3              # Data manipulation and analysis
+numpy==1.24.3              # Numerical operations and arrays
+scipy>=1.10.0              # Scientific computing and statistical tests
 
-# ---------------------------------------------
+# =============================================================================
+# 🧠 MACHINE LEARNING & MODEL TRAINING
+# =============================================================================
+scikit-learn==1.3.0        # ML algorithms, preprocessing, and evaluation
+xgboost==1.7.6             # Gradient boosting framework
+joblib==1.3.1              # Model serialization and parallel computing
+
+# =============================================================================
+# 📈 DATA VISUALIZATION & PLOTTING
+# =============================================================================
+matplotlib==3.7.1          # Basic plotting and charting
+seaborn==0.12.2            # Statistical data visualization
+plotly>=5.15.0             # Interactive charts and dashboards
+
+# =============================================================================
 # 📦 EXPERIMENT TRACKING & MODEL MANAGEMENT
-# ---------------------------------------------
-mlflow==2.3.1          # End-to-end ML lifecycle tracking, including experiment tracking, model packaging, and deployment
+# =============================================================================
+mlflow==2.7.1             # ML lifecycle management and experiment tracking
 
-# ---------------------------------------------
-# ✅ TESTING
-# ---------------------------------------------
-pytest==7.3.1          # Python testing framework — great for writing unit tests for ML pipelines, data validation, etc.
+# =============================================================================
+# ⚡ API DEVELOPMENT & WEB SERVICES
+# =============================================================================
+fastapi==0.103.0          # Modern web framework for APIs
+uvicorn[standard]==0.23.0  # ASGI server for FastAPI
+pydantic==2.3.0           # Data validation using type annotations
+python-multipart==0.0.6   # Form data handling for FastAPI
+streamlit==1.28.0         # Interactive web applications
 
-# ---------------------------------------------
-# ⚡ API DEVELOPMENT (FOR MODEL SERVING)
-# ---------------------------------------------
-fastapi==0.95.2        # Lightweight, high-performance web framework for serving ML models via REST APIs
-uvicorn==0.22.0        # ASGI server for running FastAPI apps — lightweight and fast
-#
-# ---------------------------------------------
-#  MISC
-# ---------------------------------------------
-pyyaml==6.0
-joblib==1.3.1
-setuptools==65.5.0
-ipykernel==6.29.5
+# =============================================================================
+# 🔍 MONITORING & OBSERVABILITY
+# =============================================================================
+prometheus-client>=0.17.0  # Prometheus metrics collection
+grafana-api>=1.5.1        # Grafana dashboard management
+psutil>=5.9.5             # System and process monitoring
+structlog==23.1.0         # Structured logging
+
+# =============================================================================
+# 📋 DATA VALIDATION & QUALITY ASSURANCE
+# =============================================================================
+great-expectations>=0.17.23  # Advanced data validation and profiling
+pandera==0.17.0           # Pandas DataFrame validation
+
+# =============================================================================
+# 🗄️ DATABASE & PERSISTENCE
+# =============================================================================
+sqlalchemy>=2.0.0         # Database ORM and query builder
+alembic>=1.12.0           # Database schema migrations
+
+# =============================================================================
+# 🔧 CONFIGURATION & UTILITIES
+# =============================================================================
+python-dotenv==1.0.0      # Environment variable management
+PyYAML==6.0.1             # YAML file parsing and configuration
+click==8.1.7              # Command line interface creation
+jinja2>=3.1.0             # Template engine for reports
+requests>=2.31.0          # HTTP library for API calls
+
+# =============================================================================
+# ✅ TESTING & QUALITY ASSURANCE
+# =============================================================================
+pytest==7.4.0             # Testing framework
+pytest-asyncio==0.21.1    # Async testing support
+pytest-mock==3.11.1       # Mock fixtures for testing
+pytest-cov==4.1.0         # Test coverage reporting
+httpx==0.24.1             # HTTP client for API testing
+
+# =============================================================================
+# 🔒 SECURITY & AUTHENTICATION
+# =============================================================================
+cryptography==41.0.4      # Cryptographic operations
+python-jose[cryptography]==3.3.0  # JWT token handling
+
+# =============================================================================
+# 🐳 DEPLOYMENT & PRODUCTION
+# =============================================================================
+gunicorn==21.2.0          # WSGI HTTP Server for production deployment
+
+# =============================================================================
+# 🔧 DEVELOPMENT & NOTEBOOK SUPPORT
+# =============================================================================
+ipykernel==6.25.2        # Jupyter kernel support
+setuptools>=68.0.0       # Package installation and distribution
+
+# =============================================================================
+# 📊 OPTIONAL: ADVANCED MONITORING (Can be installed separately)
+# =============================================================================
+# Uncomment these for advanced monitoring features:
+# elasticsearch>=8.0.0     # Log aggregation and search
+# redis>=4.6.0             # Caching and session storage
+# celery>=5.3.0            # Distributed task queue  
+
 
 

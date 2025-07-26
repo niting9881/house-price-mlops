@@ -11,8 +11,12 @@ ENV PYTHONPATH=/app
 COPY src/api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Create directory structure for models
+# Create directory structure for models and config
 RUN mkdir -p /app/models/trained
+RUN mkdir -p /app/config
+
+# Copy configuration files
+COPY config/ /app/config/
 
 # Copy model and preprocessor files
 COPY models/trained/house_price_model.pkl /app/models/trained/
