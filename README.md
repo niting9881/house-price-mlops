@@ -267,7 +267,59 @@ graph TB
 🔄 Continuous Improvement Loop
 ```
 
-### 🔧 **Technical Architecture Specifications**
+### �️ **Technology Stack by MLOps Stage**
+
+| **MLOps Stage** | **Primary Technologies** | **Supporting Tools** | **Key Libraries/Frameworks** |
+|-----------------|--------------------------|---------------------|------------------------------|
+| **📥 Data Ingestion** | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) | CSV Import, Schema Validation | `pandas 2.0+`, `pathlib`, `os` |
+| **🧹 Data Cleaning** | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white) | Statistical Methods, Data Quality | `pandas`, `numpy`, `scipy.stats` |
+| **🔍 Exploratory Data Analysis** | ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=flat&logo=python&logoColor=white) ![Seaborn](https://img.shields.io/badge/Seaborn-388e3c?style=flat&logo=python&logoColor=white) | Interactive Notebooks | `matplotlib`, `seaborn`, `plotly`, `jupyter` |
+| **⚙️ Feature Engineering** | ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) | Feature Selection, Encoding | `sklearn.preprocessing`, `sklearn.feature_selection` |
+| **🤖 Model Training** | ![XGBoost](https://img.shields.io/badge/XGBoost-1976D2?style=flat&logo=xgboost&logoColor=white) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) | Hyperparameter Tuning | `xgboost 1.7.6`, `sklearn.model_selection` |
+| **📊 Model Evaluation** | ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) | Cross-validation, Metrics | `sklearn.metrics`, `sklearn.model_selection` |
+| **📦 Model Registry** | ![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=flat&logo=mlflow&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white) | Experiment Tracking | `mlflow 2.5.0`, `sqlite3` |
+| **🚀 Model Deployment** | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white) | Container Orchestration | `streamlit 1.25.0`, `fastapi 0.103.0`, `docker` |
+| **🌐 Model Serving** | ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white) ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white) ![uvicorn](https://img.shields.io/badge/uvicorn-2C5282?style=flat&logo=uvicorn&logoColor=white) | REST API, Web Interface | `uvicorn`, `pydantic`, `requests` |
+| **📈 Model Monitoring** | ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white) | Metrics Collection, Alerting | `prometheus_client`, `grafana`, `alertmanager` |
+| **🔄 Continuous Integration** | ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white) ![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=flat&logo=pytest&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) | CI/CD, Testing | `pytest`, `coverage`, `github-actions` |
+| **🔧 Development Environment** | ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) | IDE, Version Control | `vscode`, `git`, `python 3.11+` |
+
+#### **📋 Core Technology Dependencies**
+
+```yaml
+# Core ML Stack
+ml_frameworks:
+  - xgboost: "1.7.6"          # Gradient boosting algorithm
+  - scikit-learn: "1.3.0"     # ML utilities and preprocessing
+  - pandas: "2.0.3"           # Data manipulation
+  - numpy: "1.24.3"           # Numerical computing
+
+# Web Framework Stack  
+web_stack:
+  - streamlit: "1.25.0"       # Interactive web applications
+  - fastapi: "0.103.0"        # API framework
+  - uvicorn: "0.23.2"         # ASGI server
+
+# MLOps & Monitoring Stack
+mlops_stack:
+  - mlflow: "2.5.0"           # Experiment tracking & model registry
+  - prometheus: "2.40+"       # Metrics collection
+  - grafana: "9.0+"           # Visualization & dashboards
+
+# Containerization & Deployment
+deployment_stack:
+  - docker: "24.0+"           # Containerization
+  - docker-compose: "3.8"     # Multi-container orchestration
+
+# Development & Testing
+dev_stack:
+  - pytest: "7.4.0"          # Testing framework
+  - jupyter: "1.0.0"         # Interactive notebooks
+  - matplotlib: "3.7.2"      # Plotting
+  - seaborn: "0.12.2"        # Statistical visualization
+```
+
+### �🔧 **Technical Architecture Specifications**
 
 #### **📥 Data Ingestion Layer**
 | Component | Technology | Input | Output | Performance |
